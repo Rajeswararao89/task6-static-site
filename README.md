@@ -60,3 +60,23 @@ I went beyond the basic HTML example and developed a **fully responsive personal
 git clone https://github.com/Rajeswararao89/task6-static-site.git
 
 # Open the index.html file in your browser
+
+🚀 How I Updated the Live Site
+Whenever I make changes:
+
+git add .
+git commit -m "Update portfolio content"
+git push origin main
+GitHub Pages automatically redeploys the latest version.
+
+📬 Contact
+LinkedIn: Rajeswara Rao Jangiti
+Email: via Contact Form on Website
+
+✅ Outcome
+This task helped me:
+
+Learn and apply GitHub Pages deployment
+Enhance my HTML, CSS, and JavaScript skills
+Create a reusable portfolio for my professional profile
+Practice integrating serverless form handling
