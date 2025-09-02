@@ -1,360 +1,70 @@
-import React from "react";
-import { motion } from "framer-motion";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevOps Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navbar -->
+  <nav>
+    <h1>My DevOps Portfolio</h1>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-// -----------------------------
-// 🔧 QUICK EDIT ZONE
-// -----------------------------
-const PROFILE = {
-  name: "Rajeswara Rao",
-  role: "DevOps & Cloud Engineer",
-  tagline:
-    "I ship reliable software with CI/CD, Kubernetes, Terraform, and AWS.",
-  location: "India",
-  email: "mailto:your.email@example.com",
-  linkedin: "https://www.linkedin.com/in/your-handle",
-  github: "https://github.com/your-handle",
-  resumeUrl: "#", // add a file link or Google Drive link
-};
-
-const SKILLS = {
-  Cloud: ["AWS (EC2/ECS/EKS)", "Azure", "VPC/IAM/S3", "CloudWatch"],
-  "Containers & Orchestration": [
-    "Docker",
-    "Docker Compose",
-    "Kubernetes",
-    "EKS",
-  ],
-  "CI/CD": ["GitHub Actions", "Jenkins", "ArgoCD", "SonarQube"],
-  "Infra as Code": ["Terraform", "Ansible", "CloudFormation"],
-  Monitoring: ["Prometheus", "Grafana", "Alertmanager", "Loki"],
-  Languages: ["Python", "Bash", "YAML", "JSON"],
-};
-
-const PROJECTS = [
-  {
-    title: "End‑to‑End Cloud App on AWS ECS + Terraform",
-    tags: ["AWS", "Terraform", "ECS", "ALB", "GitHub Actions"],
-    summary:
-      "Two‑tier Flask + Next.js app. Images to ECR, infra with Terraform, CI/CD via Actions, monitoring with CloudWatch.",
-    highlights: [
-      "Zero‑touch deploys via trunk‑based CI",
-      "Blue/Green releases behind ALB",
-      "Parameter Store & IAM roles for secrets",
-    ],
-    repo: "https://github.com/your-handle/devops-assignment",
-    live: "#",
-  },
-  {
-    title: "Kubernetes Microservices + Prometheus/Grafana",
-    tags: ["K8s", "EKS", "Helm", "Prometheus", "Grafana", "Alertmanager"],
-    summary:
-      "Microservices deployed to EKS with HPA, rolling updates, and full observability stack with custom alerts.",
-    highlights: [
-      "HPA + PodDisruptionBudgets for resilience",
-      "Dashboards for latency, error rate, SLOs",
-      "Alerting via Alertmanager routes",
-    ],
-    repo: "https://github.com/your-handle/k8s-observability",
-    live: "#",
-  },
-  {
-    title: "Jenkins CI/CD with Docker & SonarQube",
-    tags: ["Jenkins", "Docker", "SonarQube", "EC2"],
-    summary:
-      "Declarative Jenkinsfile: build → test → quality‑gate → dockerize → deploy to EC2.",
-    highlights: [
-      "Quality gate enforcement via SonarQube",
-      "Immutable release images",
-      "Rollback with versioned tags",
-    ],
-    repo: "https://github.com/your-handle/jenkins-pipeline",
-    live: "#",
-  },
-  {
-    title: "AWS VPC Foundation with Terraform",
-    tags: ["Terraform", "VPC", "Subnets", "NAT", "SG"],
-    summary:
-      "IaC for production‑ready VPC: public/private subnets, NAT, routing, SG baselines, outputs & modules.",
-    highlights: [
-      "Reusable modules & variables",
-      "Remote state + state locking",
-      "Pre‑commit hooks & fmt/validate",
-    ],
-    repo: "https://github.com/your-handle/tf-aws-vpc",
-    live: "#",
-  },
-];
-
-const CERTS = [
-  {
-    name: "AZ‑104: Microsoft Azure Administrator Associate",
-    year: "2025",
-  },
-  {
-    name: "AWS Cloud Practitioner (target)",
-    year: "2025",
-  },
-];
-
-const EXPERIENCE = [
-  {
-    company: "Elevate Labs (Intern)",
-    period: "2025",
-    bullets: [
-      "Built CI/CD with GitHub Actions → ECS (ECR, ALB, IAM).",
-      "Provisioned infra via Terraform with remote state.",
-      "Set up Prometheus, Grafana, Alertmanager for auto‑healing & alerts.",
-    ],
-  },
-];
-
-// -----------------------------
-// 🧩 UI COMPONENTS
-// -----------------------------
-const Section = ({ id, title, children }) => (
-  <section id={id} className="scroll-mt-24 py-16">
-    <motion.h2
-      initial={{ opacity: 0, y: 10 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      className="text-2xl md:text-3xl font-bold mb-6"
-    >
-      {title}
-    </motion.h2>
-    {children}
+  <!-- About Section -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>Hi, I'm <strong>Rajeswara Rao</strong>, a DevOps Engineer skilled in CI/CD, Docker, Kubernetes, AWS, Terraform, and Cloud Monitoring tools like Prometheus, Grafana, and Alertmanager.</p>
   </section>
-);
 
-const Tag = ({ children }) => (
-  <span className="inline-flex items-center rounded-full border px-2 py-0.5 text-xs mr-1 mb-1">
-    {children}
-  </span>
-);
+  <!-- Skills Section -->
+  <section id="skills">
+    <h2>Skills</h2>
+    <ul class="skills">
+      <li>Docker & Kubernetes</li>
+      <li>Jenkins, GitHub Actions, GitLab CI/CD</li>
+      <li>Terraform & AWS Cloud</li>
+      <li>Monitoring: Prometheus, Grafana, Alertmanager</li>
+      <li>Python, Bash, SQL</li>
+    </ul>
+  </section>
 
-const Card = ({ children }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 8 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    className="rounded-2xl border p-5 shadow-sm bg-white/70 dark:bg-zinc-900/60"
-  >
-    {children}
-  </motion.div>
-);
-
-// -----------------------------
-// 🎨 PAGE
-// -----------------------------
-export default function Portfolio() {
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-zinc-50 via-white to-zinc-50 text-zinc-900 dark:from-zinc-950 dark:via-zinc-950 dark:to-zinc-950 dark:text-zinc-100">
-      {/* NAV */}
-      <header className="sticky top-0 z-50 backdrop-blur bg-white/70 dark:bg-zinc-900/60 border-b">
-        <nav className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
-          <a href="#home" className="font-bold tracking-tight">{PROFILE.name}</a>
-          <div className="hidden md:flex gap-4 text-sm">
-            <a href="#projects" className="hover:underline">Projects</a>
-            <a href="#skills" className="hover:underline">Skills</a>
-            <a href="#experience" className="hover:underline">Experience</a>
-            <a href="#certs" className="hover:underline">Certifications</a>
-            <a href="#contact" className="hover:underline">Contact</a>
-          </div>
-          <div className="flex items-center gap-3">
-            <a
-              href={PROFILE.github}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm underline"
-            >
-              GitHub
-            </a>
-            <a
-              href={PROFILE.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm underline"
-            >
-              LinkedIn
-            </a>
-          </div>
-        </nav>
-      </header>
-
-      {/* HERO */}
-      <main id="home" className="mx-auto max-w-6xl px-4">
-        <section className="py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="grid md:grid-cols-2 gap-8 items-center"
-          >
-            <div>
-              <h1 className="text-3xl md:text-5xl font-extrabold leading-tight">
-                {PROFILE.role}
-              </h1>
-              <p className="mt-4 text-lg text-zinc-600 dark:text-zinc-300">
-                {PROFILE.tagline}
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <a
-                  href="#projects"
-                  className="rounded-2xl border px-4 py-2 shadow hover:shadow-md"
-                >
-                  View Projects
-                </a>
-                <a
-                  href={PROFILE.resumeUrl}
-                  className="rounded-2xl border px-4 py-2 shadow hover:shadow-md"
-                >
-                  Download Resume
-                </a>
-              </div>
-              <div className="mt-4 text-sm text-zinc-500">
-                📍 {PROFILE.location}
-              </div>
-            </div>
-
-            <Card>
-              <div className="space-y-3">
-                <div className="text-sm uppercase tracking-wide text-zinc-500">
-                  Current Focus
-                </div>
-                <ul className="list-disc pl-5 text-sm">
-                  <li>Production‑grade CI/CD with GitHub Actions & Jenkins</li>
-                  <li>Scalable platforms on AWS (ECS/EKS) via Terraform</li>
-                  <li>Observability with Prometheus, Grafana, and SLOs</li>
-                </ul>
-              </div>
-            </Card>
-          </motion.div>
-        </section>
-
-        {/* PROJECTS */}
-        <Section id="projects" title="Featured Projects">
-          <div className="grid md:grid-cols-2 gap-6">
-            {PROJECTS.map((p, i) => (
-              <Card key={i}>
-                <div className="flex items-start justify-between gap-4">
-                  <h3 className="text-lg font-semibold">{p.title}</h3>
-                  <div className="shrink-0 text-xs text-zinc-500">#{i + 1}</div>
-                </div>
-                <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-                  {p.summary}
-                </p>
-                <div className="mt-3">
-                  {p.tags.map((t) => (
-                    <Tag key={t}>{t}</Tag>
-                  ))}
-                </div>
-                <ul className="mt-3 text-sm list-disc pl-5 space-y-1">
-                  {p.highlights.map((h, j) => (
-                    <li key={j}>{h}</li>
-                  ))}
-                </ul>
-                <div className="mt-4 flex gap-3">
-                  <a href={p.repo} target="_blank" rel="noreferrer" className="text-sm underline">
-                    Repo
-                  </a>
-                  {p.live && (
-                    <a href={p.live} target="_blank" rel="noreferrer" className="text-sm underline">
-                      Live
-                    </a>
-                  )}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Section>
-
-        {/* SKILLS */}
-        <Section id="skills" title="Skills">
-          <div className="grid md:grid-cols-2 gap-6">
-            {Object.entries(SKILLS).map(([group, items]) => (
-              <Card key={group}>
-                <h3 className="font-semibold mb-2">{group}</h3>
-                <div>
-                  {items.map((s) => (
-                    <Tag key={s}>{s}</Tag>
-                  ))}
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Section>
-
-        {/* EXPERIENCE */}
-        <Section id="experience" title="Experience">
-          <div className="space-y-4">
-            {EXPERIENCE.map((exp) => (
-              <Card key={exp.company}>
-                <div className="flex items-center justify-between">
-                  <h3 className="font-semibold">{exp.company}</h3>
-                  <div className="text-sm text-zinc-500">{exp.period}</div>
-                </div>
-                <ul className="mt-2 list-disc pl-5 text-sm space-y-1">
-                  {exp.bullets.map((b, i) => (
-                    <li key={i}>{b}</li>
-                  ))}
-                </ul>
-              </Card>
-            ))}
-          </div>
-        </Section>
-
-        {/* CERTIFICATIONS */}
-        <Section id="certs" title="Certifications">
-          <div className="grid md:grid-cols-2 gap-6">
-            {CERTS.map((c) => (
-              <Card key={c.name}>
-                <div className="flex items-center justify-between">
-                  <div className="font-medium">{c.name}</div>
-                  <div className="text-sm text-zinc-500">{c.year}</div>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </Section>
-
-        {/* CONTACT */}
-        <Section id="contact" title="Contact">
-          <Card>
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-              <div>
-                <div className="text-lg font-semibold">Let’s work together</div>
-                <p className="text-sm text-zinc-600 dark:text-zinc-300">
-                  Have a role or project in mind? Drop a message.
-                </p>
-              </div>
-              <div className="flex gap-3">
-                <a href={PROFILE.email} className="rounded-2xl border px-4 py-2 shadow">
-                  Email Me
-                </a>
-                <a href={PROFILE.linkedin} target="_blank" rel="noreferrer" className="rounded-2xl border px-4 py-2 shadow">
-                  LinkedIn
-                </a>
-                <a href={PROFILE.github} target="_blank" rel="noreferrer" className="rounded-2xl border px-4 py-2 shadow">
-                  GitHub
-                </a>
-              </div>
-            </div>
-          </Card>
-        </Section>
-      </main>
-
-      {/* FOOTER */}
-      <footer className="border-t mt-8">
-        <div className="mx-auto max-w-6xl px-4 py-8 text-xs text-zinc-500 flex flex-col md:flex-row items-center justify-between gap-2">
-          <div>
-            © {new Date().getFullYear()} {PROFILE.name}. Built with React + Tailwind.
-          </div>
-          <div className="flex gap-4">
-            <a href="#home" className="hover:underline">Top</a>
-            <a href="#projects" className="hover:underline">Projects</a>
-            <a href="#skills" className="hover:underline">Skills</a>
-          </div>
-        </div>
-      </footer>
+  <!-- Projects Section -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project">
+      <h3>CI/CD Pipeline with Jenkins & Docker</h3>
+      <p>Built a full CI/CD pipeline using Jenkins and Docker to automate deployment of applications.</p>
     </div>
-  );
-}
+    <div class="project">
+      <h3>Kubernetes 2048 Game Deployment</h3>
+      <p>Deployed the popular 2048 game on AWS EKS cluster with autoscaling and monitoring.</p>
+    </div>
+    <div class="project">
+      <h3>GitOps with Terraform & ArgoCD</h3>
+      <p>Implemented GitOps workflow to manage Kubernetes clusters with Terraform and ArgoCD.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:rajeswara@example.com">rajeswara@example.com</a></p>
+    <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+    <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+  </section>
+
+  <footer>
+    <p>© 2025 Rajeswara Rao | DevOps Portfolio</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
